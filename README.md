@@ -8,27 +8,11 @@ MAMP/WAMP on steroids.
 
 [Vagrant]: http://vagrantup.com/
 
-## Installing & Documentation
+## Installation
 
-Follow our [quickstart instructions](http://docs.chassis.io/en/latest/quickstart/)
-to get up and running right away!
-
-We've got tonnes more documentation available at http://chassis.io/ to peruse
-through at your leisure.
-
-## FAQ
-
-### How is Chassis different from [VVV](https://github.com/Varying-Vagrant-Vagrants/VVV)?
-
-Each Chassis install is self-contained. We do this to try and mirror the server
-that you will be deploying to.
-
-Note that while you can't have multiple independent installs on the same Chassis
-box, we support both subdomain and subdirectory multisite out of the box.
-
-### Can you add X?
-
-While we certainly can add any feature, consider first if it's better off as a
-Chassis extension. We try and keep Chassis as lightweight as possible, and
-extensions are a good way of adding features without weighing down
-Chassis itself.
+0. If you aren't using Virtualbox and MacOS, you're on your own.
+1. Follow Chassis' [quickstart instructions](http://docs.chassis.io/en/latest/quickstart/).
+2. Confirm you can load the site at http://workshop.local
+ * If you are proxied, remember to add `workshop.local` to MacOS' "Bypass settings for these Hosts & Domains" option in Network Settings.
+3. SSH into the VM: `vagrant ssh`
+4. Run: `/etc/workshop/install.sh`

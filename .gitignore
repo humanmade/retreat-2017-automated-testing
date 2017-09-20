@@ -8,3 +8,5 @@
 /.wp-cli
 /extensions
 /phpmyadmin
+/local-config-extensions.php
+/content/debug.log
