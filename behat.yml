@@ -18,7 +18,7 @@ default:
     Behat\MinkExtension:
       base_url: http://workshop.local
       browser_name: chrome
-      default_session: default
+      default_session: selenium2
       javascript_session: selenium2
       sessions:
         default:
