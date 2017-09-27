@@ -7,3 +7,10 @@ Version: 1
 License: wtfpl
 Template: twentyfifteen
 */
+
+/* http://workshop.local/movies */
+.post-type-archive-movie article {
+	display: inline-block;
+	margin-right: 0 !important;
+	width: 35% !important;
+}
