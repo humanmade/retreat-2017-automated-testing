@@ -10,4 +10,4 @@
 /phpmyadmin
 /local-config-extensions.php
 /content/debug.log
-/vendor
+vendor/
