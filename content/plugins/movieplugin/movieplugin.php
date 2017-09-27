@@ -39,3 +39,7 @@ add_action( 'init', function() {
 		'show_in_rest'  => true,
 	] );
 } );
+
+// "Add movie" shortcode.
+add_shortcode( 'add_movie_form', function() {
+} );
