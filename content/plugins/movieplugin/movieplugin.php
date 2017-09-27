@@ -42,4 +42,19 @@ add_action( 'init', function() {
 
 // "Add movie" shortcode.
 add_shortcode( 'add_movie_form', function() {
+	wp_enqueue_script( 'movieplugin-js', plugins_url( 'script.js', __FILE__ ), [], time() );
+	?>
+
+	<form method="get" action="/" class="movie-entry-form">
+		<fieldset>
+			<legend>Search for a movie to add to the database:</legend>
+
+			<label for="moviesearch">Title</label>
+			<input type="search" name="moviesearch" id="moviesearch" placeholder="e.g. 'Beauty and the Beast'" required>
+
+			<input type="submit" value="Start search">
+		</fieldset>
+	</form>
+
+<?php
 } );

@@ -17,7 +17,7 @@ wp menu location assign navigation primary
 wp menu item add-custom navigation Movies http://workshop.local/movies/
 
 # Home page.
-homepage=$(wp post create --post_type=page --post_title="Movie Schedule" --post_content="[add_movie_form]" --post_status=publish --porcelain)
+homepage=$(wp post create --post_type=page --post_title="Movie Database" --post_content="[add_movie_form]" --post_status=publish --porcelain)
 wp option update show_on_front page
 wp option update page_on_front $homepage
 

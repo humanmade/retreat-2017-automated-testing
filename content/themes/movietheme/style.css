@@ -14,3 +14,18 @@ Template: twentyfifteen
 	margin-right: 0 !important;
 	width: 35% !important;
 }
+
+/* "add movie" field on homepage */
+.movie-entry-form label {
+	display: block;
+	font-weight: bold;
+}
+.movie-entry-form input[type="search"] {
+	width: 100%;
+}
+.movie-entry-form legend {
+	margin-bottom: 1rem;
+}
+.movie-entry-form input[type="submit"] {
+	margin-top: 3rem;
+}
