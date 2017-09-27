@@ -11,3 +11,4 @@
 /local-config-extensions.php
 /content/debug.log
 vendor/
+/content/uploads/

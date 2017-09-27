@@ -10,9 +10,18 @@
 // Set up content types.
 add_action( 'init', function() {
 	register_post_type( 'movie', [
+		'has_archive'   => true,
 		'label'         => 'Movies',
 		'public'        => true,
 		'show_in_rest'  => true,
+		'rewrite'       => [
+			'slug' => 'movies',
+		],
+		'supports'      => [
+			'editor',
+			'thumbnail',
+			'title',
+		],
 
 		// Below dashboard.
 		'menu_position' => 2,
