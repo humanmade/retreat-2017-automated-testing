@@ -15,22 +15,33 @@ document.querySelectorAll('.movie-entry-form').forEach(
 
 function movie_search_completed(event) {
 	if (this.status < 200 || this.status >= 400) {
-		// Server returned an error.
 		return;
 	}
 
 	// Success!
-	var films = JSON.parse(this.responseText);
+	var films = JSON.parse(this.responseText),
+		search_result = null;
 
-	films.results.forEach(function(film) {
-		console.log(film);
+	films.results.some(function(film, _) {
+		var query    = document.getElementById('moviesearch').value.toLowerCase(),
+			film_title = film.title.toLowerCase(),
+			film_desc  = film.overview.toLowerCase();
 
-		// TODO
-		// ----
-		//
-		// 2) For each item in that 'results', do a basic comparision against 'title' and 'overview'.
+		// 2) For each item in that 'results', do a basic search.
+		if (film_title.indexOf(query) < 0 && film_desc.indexOf(query) < 0) {
+			return false;
+		}
+
 		// 3) Return first matching film result.
-		// 4) Add form elements (empty textboxes etc) to render the received data into.
-		// 5) Create and hook up "save form" logic (probably no-JS POST, for simplicity).
+		search_result = film;
+
+		return true;
 	});
+
+	if (search_result === null) {
+		return;
+	}
+
+	// 4) Add form elements (empty textboxes etc) to render the received data into.
+	// 5) Create and hook up "save form" logic (probably no-JS POST, for simplicity).
 }
