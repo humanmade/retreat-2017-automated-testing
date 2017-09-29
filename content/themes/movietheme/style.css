@@ -16,16 +16,20 @@ Template: twentyfifteen
 }
 
 /* "add movie" field on homepage */
-.movie-entry-form label {
+.movie-form label {
 	display: block;
 	font-weight: bold;
 }
-.movie-entry-form input[type="search"] {
+.movie-form input[type="search"] {
 	width: 100%;
 }
-.movie-entry-form legend {
+.movie-form legend {
 	margin-bottom: 1rem;
 }
-.movie-entry-form input[type="submit"] {
+.movie-form input[type="submit"] {
 	margin-top: 3rem;
+}
+
+.initially-hidden {
+	display: none;
 }

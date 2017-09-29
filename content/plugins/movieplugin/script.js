@@ -1,15 +1,12 @@
-// DOMContentLoaded
-document.querySelectorAll('.movie-entry-form').forEach(
-	function(currentValue, currentIndex, listObj) {
-		currentValue.addEventListener('submit', function(event) {
-			event.preventDefault();
+document.querySelector('.movie-search-form')
+	.addEventListener('submit', function(event) {
+		event.preventDefault();
 
-			// 1) go request films.json.
-			var request = new XMLHttpRequest();
-			request.open('GET', '/content/plugins/movieplugin/films.json', true);
-			request.addEventListener('load', movie_search_completed);
-			request.send();
-		});
+		// 1) go request films.json.
+		var request = new XMLHttpRequest();
+		request.open('GET', '/content/plugins/movieplugin/films.json', true);
+		request.addEventListener('load', movie_search_completed);
+		request.send();
 	}
 );
 
@@ -23,7 +20,7 @@ function movie_search_completed(event) {
 		search_result = null;
 
 	films.results.some(function(film, _) {
-		var query    = document.getElementById('moviesearch').value.toLowerCase(),
+		var query    = document.querySelector('.moviesearch').value.toLowerCase(),
 			film_title = film.title.toLowerCase(),
 			film_desc  = film.overview.toLowerCase();
 
@@ -42,6 +39,15 @@ function movie_search_completed(event) {
 		return;
 	}
 
+	console.log(search_result);
+	movie_render_form(search_result);
+}
+
+function movie_render_form(movie) {
+	document.querySelector('.movie-search-form').classList.add('initially-hidden');
+	document.querySelector('.movie-entry-form').classList.remove('initially-hidden');
+
+	alert(movie.title);
 	// 4) Add form elements (empty textboxes etc) to render the received data into.
 	// 5) Create and hook up "save form" logic (probably no-JS POST, for simplicity).
 }
