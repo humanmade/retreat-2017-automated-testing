@@ -71,7 +71,7 @@ add_shortcode( 'add_movie_form', function() {
 function is_suitable_for( int $age, int $movie_id = 0 ) : bool {
 	$movie = get_post( $movie_id );
 
-	if ( false === $movie ) { 
+	if ( false === $movie ) {
 		return false;
 	}
 

@@ -17,7 +17,7 @@ require_once $_tests_dir . '/includes/functions.php';
  * Manually load the plugin being tested.
  */
 function _manually_load_plugin() {
-	require dirname( dirname( __FILE__ ) ) . '/movieplugin.php';
+	require dirname( dirname( __FILE__ ) ) . '/content/plugins/movieplugin/movieplugin.php';
 }
 tests_add_filter( 'muplugins_loaded', '_manually_load_plugin' );
 
