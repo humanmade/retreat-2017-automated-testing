@@ -97,3 +97,33 @@ function is_suitable_for( int $age, int $movie_id = 0 ) : bool {
 
 	return false;
 }
+
+/**
+ * Create Movie Wrapper
+ *
+ * @param array $post_args
+ * @param string|array $age_rating
+ * @param string|array $genre
+ *
+ * @return int|WP_Error
+ */
+function add_movie( array $post_args, $age_rating, $genre ) {
+
+	$post_id = wp_insert_post( $post_args );
+
+	if ( is_wp_error( $post_id ) ) {
+		return $post_id;
+	}
+
+	// Attach any include rating, arrays of slug accepted
+	if ( ! empty ( $age_rating ) ) {
+		wp_set_object_terms( $post_id, $age_rating, 'rating' );
+	}
+
+	// Attach any include genre, arrays of slug accepted
+	if ( ! empty( $genre ) ) {
+		wp_set_object_terms( $post_id, $genre, 'genre' );
+	}
+
+	return $post_id;
+}
