@@ -6,6 +6,7 @@ cd /vagrant
 composer install
 
 # Configure WP.
+wp site empty --yes
 wp plugin activate movieplugin
 wp theme activate movietheme
 wp rewrite structure '/%year%/%monthnum%/%postname%'
