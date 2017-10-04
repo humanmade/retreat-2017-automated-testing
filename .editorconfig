@@ -15,7 +15,6 @@ indent_style = tab
 
 
 [{.jshintrc,*.json,*.yml,*.xml,*.sh,*.feature}]
-[{.jshintrc,*.json,*.yml}]
 indent_style = space
 indent_size = 2
 
