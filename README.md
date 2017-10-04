@@ -1,7 +1,7 @@
 ## Installation
 
 1. If you aren't using Virtualbox and MacOS, you're on your own.
-1. Check you meet [Chassis' requirements](http://docs.chassis.io/en/latest/quickstart/). You also need [NPM](https://nodejs.org/en/) installed.
+1. Check you meet [Chassis' requirements](http://docs.chassis.io/en/latest/quickstart/). You also need [NPM](https://nodejs.org/en/) installed (on your main OS, not inside the VM).
 1. Run: `git clone --recursive https://github.com/humanmade/retreat-2017-automated-testing.git automated-testing`
 1. Run: `cd automated-testing`
 1. Run: `vagrant up`
