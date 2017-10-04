@@ -23,26 +23,25 @@ wp option update page_on_front $homepage
 
 # Load movie ratings.
 movie_rating=$(wp term create rating Universal --porcelain)
- wp term meta set movie_rating age_relation 0
+wp term meta set $movie_rating age_relation 0
 
-  movie_rating=$(wp term create rating 12A --porcelain) 
-wp term meta set movie_rating age_relation 11  
+movie_rating=$(wp term create rating 12A --porcelain)
+wp term meta set $movie_rating age_relation 11
 
-movie_rating=$(wp term create rating 12 --porcelain) 
-wp term meta set movie_rating age_relation 12
+movie_rating=$(wp term create rating 12 --porcelain)
+wp term meta set $movie_rating age_relation 12
 
-  movie_rating=$(wp term create rating 15 --porcelain) 
-wp term meta set movie_rating age_relation 15  
+movie_rating=$(wp term create rating 15 --porcelain)
+wp term meta set $movie_rating age_relation 15
 
-movie_rating=$(wp term create rating PG --porcelain) 
-wp term meta set movie_rating age_relation 8
+movie_rating=$(wp term create rating PG --porcelain)
+wp term meta set $movie_rating age_relation 8
 
-  movie_rating=$(wp term create rating R18 --porcelain) 
-wp term meta set movie_rating age_relation 18  
+movie_rating=$(wp term create rating R18 --porcelain)
+wp term meta set $movie_rating age_relation 18
 
-movie_rating=$(wp term create rating 18 --porcelain) 
-wp term meta set movie_rating age_relation 18
-
+movie_rating=$(wp term create rating 18 --porcelain)
+wp term meta set $movie_rating age_relation 18
 
 # Load a movie genre.
 action_genre=$(wp term create genre Action --porcelain)
