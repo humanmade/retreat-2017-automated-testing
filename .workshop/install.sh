@@ -51,6 +51,4 @@ wp term meta update $action_genre genre_id 28
 # Load a movie.
 wp movie populate
 
-
-
 echo "All done!"
