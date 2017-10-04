@@ -49,8 +49,8 @@ action_genre=$(wp term create genre Action --porcelain)
 wp term meta update $action_genre genre_id 28
 
 # Load a movie.
-movie=$(wp post create --post_status=publish --post_type=movie --post_title="Deadpool" --post_content="Deadpool tells the origin story of former Special Forces operative turned mercenary Wade Wilson, who after being subjected to a rogue experiment that leaves him with accelerated healing powers, adopts the alter ego Deadpool. Armed with his new abilities and a dark, twisted sense of humor, Deadpool hunts down the man who nearly destroyed his life." --porcelain)
-wp post term set $movie rating $movie_rating --by=id
-wp post term set $movie genre $action_genre --by=id
+wp movie populate
+
+
 
 echo "All done!"
