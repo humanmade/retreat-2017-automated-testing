@@ -100,6 +100,7 @@ extensions:
   - chassis/sequelpro
   - chassis/composer
   - chassis/npm
+  - chassis/Xdebug
 
 # PHP version
 # Values: 5.6, 7.0, 7.1 (or 5.6.30)
