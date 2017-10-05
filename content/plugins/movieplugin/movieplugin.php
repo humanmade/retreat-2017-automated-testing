@@ -107,7 +107,7 @@ function is_suitable_for( int $age, int $movie_id = 0 ) : bool {
  *
  * @return int|WP_Error
  */
-function add_movie( array $post_args, $age_rating, $genre ) {
+function add_movie( array $post_args, $age_rating = false, $genre = false ) {
 
 	$post_id = wp_insert_post( $post_args );
 
@@ -126,4 +126,43 @@ function add_movie( array $post_args, $age_rating, $genre ) {
 	}
 
 	return $post_id;
+}
+
+
+/**
+ * Import command for movies
+ *
+ */
+if ( defined( 'WP_CLI' ) && WP_CLI ) {
+	class WP_CLI_Movies extends WP_CLI_Command {
+		/**
+		 * @subcommand populate
+		 * @synopsis [--include=<whitelist-regex>] [--verbose]
+		 */
+		public function import_movies() {
+			$genres_json = file_get_contents( __DIR__ . '/genres.json' );
+			$genres      = json_decode( $genres_json )->genres;
+
+			$movies_json = file_get_contents( __DIR__ . '/films.json' );
+			$movies      = json_decode( $movies_json )->results;
+
+			foreach ( $movies as $movie ) {
+				$movie->post_title   = $movie->title;
+				$movie->post_content = $movie->overview;
+				$movie->post_type    = 'movie';
+				$movie->post_status  = 'publish';
+
+				$genre = [];
+
+				foreach ( $movie->genre_ids as $id ) {
+					$key = array_search( $id, array_column( $genres, 'id' ), true );
+
+					$genre[] = $genres[ $key ]->name;
+				}
+
+				add_movie( (array) $movie, (array) $movie->rating, $genre );
+			}
+		}
+	}
+	WP_CLI::add_command( 'movie', 'WP_CLI_Movies' );
 }

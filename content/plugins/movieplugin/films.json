@@ -18,6 +18,9 @@
         18,
         27
       ],
+      "rating": [
+        "18"
+      ],
       "backdrop_path": "\\/tcheoA2nPATCm2vvXw2hVQoaEFD.jpg",
       "adult": false,
       "overview": "In a small town in Maine, seven children known as The Losers Club come face to face with life problems, bullies and a monster that takes the shape of a clown called Pennywise.",
@@ -39,6 +42,9 @@
         12,
         35
       ],
+      "rating": [
+        "Universal"
+      ],
       "backdrop_path": "\\/uX7LXnsC7bZJZjn048UCOwkPXWJ.jpg",
       "adult": false,
       "overview": "Minions Stuart, Kevin and Bob are recruited by Scarlet Overkill, a super-villain who, alongside her inventor husband Herb, hatches a plot to take over the world.",
@@ -59,6 +65,9 @@
         12,
         35
       ],
+      "rating": [
+        "18"
+      ],
       "backdrop_path": "\\/n1y094tVDFATSzkTnFxoGZ1qNsG.jpg",
       "adult": false,
       "overview": "Deadpool tells the origin story of former Special Forces operative turned mercenary Wade Wilson, who after being subjected to a rogue experiment that leaves him with accelerated healing powers, adopts the alter ego Deadpool. Armed with his new abilities and a dark, twisted sense of humor, Deadpool hunts down the man who nearly destroyed his life.",
@@ -78,6 +87,9 @@
         10751,
         14,
         10749
+      ],
+      "rating": [
+        "PG"
       ],
       "backdrop_path": "\\/6aUWe0GSl69wMTSWWexsorMIvwU.jpg",
       "adult": false,
@@ -100,6 +112,9 @@
         80,
         53
       ],
+      "rating": [
+        "15"
+      ],
       "backdrop_path": "\\/nnMC0BM6XbjIIrT4miYmMtPGcQV.jpg",
       "adult": false,
       "overview": "Batman raises the stakes in his war on crime. With the help of Lt. Jim Gordon and District Attorney Harvey Dent, Batman sets out to dismantle the remaining criminal organizations that plague the streets. The partnership proves to be effective, but they soon find themselves prey to a reign of chaos unleashed by a rising criminal mastermind known to the terrified citizens of Gotham as the Joker.",
@@ -120,6 +135,9 @@
         12,
         14
       ],
+      "rating": [
+        "12A"
+      ],
       "backdrop_path": "\\/6iUNJZymJBMXXriQyFZfLAKnjO6.jpg",
       "adult": false,
       "overview": "An Amazon princess comes to the world of Man to become the greatest of the female superheroes.",
@@ -139,6 +157,9 @@
         12,
         18,
         878
+      ],
+      "rating": [
+        "15"
       ],
       "backdrop_path": "\\/xu9zaAevzQ5nnrsXN6JcahLnG4i.jpg",
       "adult": false,
@@ -162,6 +183,9 @@
         28,
         35
       ],
+      "rating": [
+        "PG"
+      ],
       "backdrop_path": "\\/2BXd0t9JdVqCp9sKf6kzMkr7QjB.jpg",
       "adult": false,
       "overview": "The special bond that develops between plus-sized inflatable robot Baymax, and prodigy Hiro Hamada, who team up with a group of friends to form a band of high-tech heroes.",
@@ -181,6 +205,9 @@
         28,
         878,
         12
+      ],
+      "rating": [
+        "12"
       ],
       "backdrop_path": "\\/bHarw8xrmQeqf3t8HpuMY7zoK4x.jpg",
       "adult": false,
@@ -204,6 +231,9 @@
         9648,
         12
       ],
+      "rating": [
+        "15"
+      ],
       "backdrop_path": "\\/s2bT29y0ngXxxu2IA8AOzzXTRhd.jpg",
       "adult": false,
       "overview": "Cobb, a skilled thief who commits corporate espionage by infiltrating the subconscious of his targets is offered a chance to regain his old life as payment for a task considered to be impossible: \"inception\", the implantation of another person's idea into a target's subconscious.",
@@ -224,6 +254,9 @@
         12,
         35,
         878
+      ],
+      "rating": [
+        "12A"
       ],
       "backdrop_path": "\\/vMNEvp4wKAkDIODZjz5BsqVWY9y.jpg",
       "adult": false,
@@ -246,6 +279,9 @@
         878,
         53
       ],
+      "rating": [
+        "18"
+      ],
       "backdrop_path": "\\/phszHPFVhPHhMZgo0fWTKBDQsJA.jpg",
       "adult": false,
       "overview": "An apocalyptic story set in the furthest reaches of our planet, in a stark desert landscape where humanity is broken, and most everyone is crazed fighting for the necessities of life. Within this world exist two rebels on the run who just might be able to restore order. There's Max, a man of action and a man of few words, who seeks peace of mind following the loss of his wife and child in the aftermath of the chaos. And Furiosa, a woman of action and a woman who believes her path to survival may be achieved if she can make it across the desert back to her childhood homeland.",
@@ -267,6 +303,9 @@
         878,
         53
       ],
+      "rating": [
+        "15"
+      ],
       "backdrop_path": "\\/dkMD5qlogeRMiEixC4YNPUvax2T.jpg",
       "adult": false,
       "overview": "Twenty-two years after the events of Jurassic Park, Isla Nublar now features a fully functioning dinosaur theme park, Jurassic World, as originally envisioned by John Hammond.",
@@ -285,6 +324,9 @@
       "genre_ids": [
         28,
         53
+      ],
+      "rating": [
+        "18"
       ],
       "backdrop_path": "\\/mFb0ygcue4ITixDkdr7wm1Tdarx.jpg",
       "adult": false,
@@ -305,6 +347,9 @@
         878,
         12,
         53
+      ],
+      "rating": [
+        "15"
       ],
       "backdrop_path": "\\/4PwyB0ErucIANzW24Kori71J6gU.jpg",
       "adult": false,
@@ -327,6 +372,9 @@
         14,
         878
       ],
+      "rating": [
+        "12A"
+      ],
       "backdrop_path": "\\/xSxlmtLz2NYtO07N4WexY1y53pl.jpg",
       "adult": false,
       "overview": "In the 22nd century, a paraplegic Marine is dispatched to the moon Pandora on a unique mission, but becomes torn between following orders and protecting an alien civilization.",
@@ -346,6 +394,9 @@
         878,
         28,
         12
+      ],
+      "rating": [
+        "12"
       ],
       "backdrop_path": "\\/hbn46fQaRmlpBuUrEiFqv0GDL6Y.jpg",
       "adult": false,
@@ -367,6 +418,9 @@
         28,
         878
       ],
+      "rating": [
+        "15"
+      ],
       "backdrop_path": "\\/m5O3SZvQ6EgD5XXXLPIP1wLppeW.jpg",
       "adult": false,
       "overview": "Following the events of Age of Ultron, the collective governments of the world pass an act designed to regulate all superhuman activity. This polarizes opinion amongst the Avengers, causing two factions to side with Iron Man or Captain America, which causes an epic battle between former allies.",
@@ -387,6 +441,9 @@
         14,
         28
       ],
+      "rating": [
+        "12"
+      ],
       "backdrop_path": "\\/8AUQ7YlJJA9C8kWk8P4YNHIcFDE.jpg",
       "adult": false,
       "overview": "Jack Sparrow, a freewheeling 17th-century pirate who roams the Caribbean Sea, butts heads with a rival pirate bent on pillaging the village of Port Royal. When the governor's daughter is kidnapped, Sparrow decides to help the girl's love save her. But their seafaring mission is hardly simple.",
@@ -404,6 +461,9 @@
       "original_title": "Fight Club",
       "genre_ids": [
         18
+      ],
+      "rating": [
+        "18"
       ],
       "backdrop_path": "\\/87hTDiay2N2qWyX4Ds7ybXi9h8I.jpg",
       "adult": false,
@@ -424,6 +484,9 @@
         28,
         18,
         878
+      ],
+      "rating": [
+        "18"
       ],
       "backdrop_path": "\\/5pAGnkFYSsFJ99ZxDIYnhQbQFXs.jpg",
       "adult": false,
@@ -446,6 +509,9 @@
         18,
         53
       ],
+      "rating": [
+        "15"
+      ],
       "backdrop_path": "\\/rjUl3pd1LHVOVfG4IGcyA1cId5l.jpg",
       "adult": false,
       "overview": "A group of scientists in San Francisco struggle to stay alive in the aftermath of a plague that is wiping out humanity, while Caesar tries to maintain dominance over his community of intelligent apes.",
@@ -465,6 +531,9 @@
         9648,
         53,
         18
+      ],
+      "rating": [
+        "18"
       ],
       "backdrop_path": "\\/bt6DhdALyhf90gReozoQ0y3R3vZ.jpg",
       "adult": false,
@@ -487,6 +556,9 @@
         53,
         10752
       ],
+      "rating": [
+        "15"
+      ],
       "backdrop_path": "\\/fii9tPZTpy75qOCJBulWOb0ifGp.jpg",
       "adult": false,
       "overview": "Based on the real life story of legendary cryptanalyst Alan Turing, the film portrays the nail-biting race against time by Turing and his brilliant team of code-breakers at Britain's top-secret Government Code and Cypher School at Bletchley Park, during the darkest days of World War II.",
@@ -508,6 +580,9 @@
         35,
         878
       ],
+      "rating": [
+        "15"
+      ],
       "backdrop_path": "\\/aJn9XeesqsrSLKcHfHP4u5985hn.jpg",
       "adult": false,
       "overview": "The Guardians must fight to keep their newfound family together as they unravel the mysteries of Peter Quill's true parentage.",
@@ -528,6 +603,9 @@
         14,
         28
       ],
+      "rating": [
+        "12"
+      ],
       "backdrop_path": "\\/pIUvQ9Ed35wlWhY2oU6OmwEsmzG.jpg",
       "adult": false,
       "overview": "Young hobbit Frodo Baggins, after inheriting a mysterious ring from his uncle Bilbo, must leave his home in order to keep it from falling into the hands of its evil creator. Along the way, a fellowship is formed to protect the ringbearer and make sure that the ring arrives at its final destination: Mt. Doom, the only place where it can be destroyed.",
@@ -547,6 +625,9 @@
         18,
         80
       ],
+      "rating": [
+        "15"
+      ],
       "backdrop_path": "\\/xBKGJQsAIeweesB79KC89FpBrVr.jpg",
       "adult": false,
       "overview": "Framed in the 1940s for the double murder of his wife and her lover, upstanding banker Andy Dufresne begins a new life at the Shawshank prison, where he puts his accounting skills to work for an amoral warden. During his long stretch in prison, Dufresne comes to be admired by the other inmates -- including an older prisoner named Red -- for his integrity and unquenchable sense of hope.",
@@ -565,6 +646,9 @@
       "genre_ids": [
         53,
         80
+      ],
+      "rating": [
+        "18"
       ],
       "backdrop_path": "\\/9rZg1J6vMQoDVSgRyWcpJa8IAGy.jpg",
       "adult": false,
@@ -587,6 +671,9 @@
         18,
         53
       ],
+      "rating": [
+        "18"
+      ],
       "backdrop_path": "\\/3bgtUfKQKNi3nJsAB5URpP2wdRt.jpg",
       "adult": false,
       "overview": "Following the death of District Attorney Harvey Dent, Batman assumes responsibility for Dent's crimes to protect the late attorney's reputation and is subsequently hunted by the Gotham City Police Department. Eight years later, Batman encounters the mysterious Selina Kyle and the villainous Bane, a new terrorist leader who overwhelms Gotham's finest. The Dark Knight resurfaces to protect a city that has branded him an enemy.",
@@ -604,6 +691,9 @@
       "original_title": "Whiplash",
       "genre_ids": [
         18
+      ],
+      "rating": [
+        "15"
       ],
       "backdrop_path": "\\/6bbZ6XyvgfjhQwbplnUh1LSj1ky.jpg",
       "adult": false,
@@ -626,6 +716,9 @@
         878,
         14
       ],
+      "rating": [
+        "12"
+      ],
       "backdrop_path": "\\/c2Ax8Rox5g6CneChwy1gmu4UbSb.jpg",
       "adult": false,
       "overview": "Thirty years after defeating the Galactic Empire, Han Solo and his allies face a new threat from the evil Kylo Ren and his army of Stormtroopers.",
@@ -644,6 +737,9 @@
       "genre_ids": [
         28,
         878
+      ],
+      "rating": [
+        "15"
       ],
       "backdrop_path": "\\/eCgIoGvfNXrbSiQGqQHccuHjQHm.jpg",
       "adult": false,
@@ -665,6 +761,9 @@
         12,
         878
       ],
+      "rating": [
+        "12A"
+      ],
       "backdrop_path": "\\/sy3e2e4JwdAtd2oZGA2uUilZe8j.jpg",
       "adult": false,
       "overview": "During a manned mission to Mars, Astronaut Mark Watney is presumed dead after a fierce storm and left behind by his crew. But Watney has survived and finds himself stranded and alone on the hostile planet. With only meager supplies, he must draw upon his ingenuity, wit and spirit to subsist and find a way to signal to Earth that he is alive.",
@@ -684,6 +783,9 @@
         35,
         18,
         10749
+      ],
+      "rating": [
+        "PG"
       ],
       "backdrop_path": "\\/d5ud5KadGTrY6UQzzNIuK6L0Xyo.jpg",
       "adult": false,
@@ -706,6 +808,9 @@
         878,
         53
       ],
+      "rating": [
+        "12"
+      ],
       "backdrop_path": "\\/lkOZcsXcOLZYeJ2YxJd3vSldvU4.jpg",
       "adult": false,
       "overview": "Set in a post-apocalyptic world, young Thomas is deposited in a community of boys after his memory is erased, soon learning they're all trapped in a maze that will require him to join forces with fellow \"runners\" for a shot at escape.",
@@ -725,6 +830,9 @@
         28,
         80,
         18
+      ],
+      "rating": [
+        "18"
       ],
       "backdrop_path": "\\/65JWXDCAfwHhJKnDwRnEgVB411X.jpg",
       "adult": false,
@@ -746,6 +854,9 @@
         878,
         12
       ],
+      "rating": [
+        "12"
+      ],
       "backdrop_path": "\\/ZQixhAZx6fH1VNafFXsqa1B8QI.jpg",
       "adult": false,
       "overview": "After being held captive in an Afghan cave, billionaire engineer Tony Stark creates a unique weaponized suit of armor to fight evil.",
@@ -765,6 +876,9 @@
         28,
         12,
         14
+      ],
+      "rating": [
+        "15"
       ],
       "backdrop_path": "\\/vsjBeMPZtyB7yNsYY56XYxifaQZ.jpg",
       "adult": false,
@@ -786,6 +900,9 @@
         14,
         10751
       ],
+      "rating": [
+        "PG"
+      ],
       "backdrop_path": "\\/dXpwPlJF0yKGdVIVwJXCY59ak8Q.jpg",
       "adult": false,
       "overview": "Harry Potter has lived under the stairs at his aunt and uncle's house his whole life. But on his 11th birthday, he learns he's a powerful wizard -- with a place waiting for him at the Hogwarts School of Witchcraft and Wizardry. As he learns to harness his newfound powers with the help of the school's kindly headmaster, Harry uncovers the truth about his parents' deaths -- and about the villain who's to blame.",
@@ -805,6 +922,9 @@
         12,
         14,
         28
+      ],
+      "rating": [
+        "15"
       ],
       "backdrop_path": "\\/8BPZO0Bf8TeAy8znF43z8soK3ys.jpg",
       "adult": false,
