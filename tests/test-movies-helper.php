@@ -6,6 +6,8 @@
  */
 class MovieHelper extends WP_UnitTestCase {
 
+
+
 	/**
 	 * @return array
 	 */
@@ -14,17 +16,20 @@ class MovieHelper extends WP_UnitTestCase {
 			[
 				1,
 				2,
+			],
+			[
+				1,
+				2,
 			]
 		];
 	}
 
 	/**
-	 * @dataProvider provider_is_suitable
+
 	 */
-	function test_is_suitable( $age, $movie ){
+	function test_is_suitable(){
 
-		$this->assertTrue( true );
-
+		$this->assertTrue( is_suitable_for( 0, 12 ) );
 
 	}
 
