@@ -33,3 +33,7 @@ Template: twentyfifteen
 .initially-hidden {
 	display: none;
 }
+
+.entry-footer a {
+	text-decoration: underline;
+}
