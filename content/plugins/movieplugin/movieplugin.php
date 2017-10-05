@@ -62,16 +62,16 @@ add_shortcode( 'add_movie_form', function() {
 /**
  * Conditional Check for age suitable for movies
  *
- * @param int $age
  * @param int $movie_id
+ * @param int $age
  * @test data Providers
  *
  * @return bool
  */
-function is_suitable_for( int $age, int $movie_id = 0 ) : bool {
+function is_suitable_for( int $movie_id = 0, int $age ) : bool {
 	$movie = get_post( $movie_id );
 
-	if ( false === $movie ) {
+	if ( is_null( $movie ) ) {
 		return false;
 	}
 
