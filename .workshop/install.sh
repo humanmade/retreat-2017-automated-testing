@@ -44,11 +44,7 @@ wp term meta set $movie_rating age_relation 18
 movie_rating=$(wp term create rating 18 --porcelain)
 wp term meta set $movie_rating age_relation 18
 
-# Load a movie genre.
-action_genre=$(wp term create genre Action --porcelain)
-wp term meta update $action_genre genre_id 28
-
-# Load a movie.
-wp movie populate
+# Load movies.
+#wp movie populate
 
 echo "All done!"
