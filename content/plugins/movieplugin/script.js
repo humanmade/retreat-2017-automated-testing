@@ -44,10 +44,13 @@ function movie_search_completed(event) {
 }
 
 function movie_render_form(movie) {
+	var form = document.querySelector('.movie-entry-form');
+	form.classList.remove('initially-hidden');
 	document.querySelector('.movie-search-form').classList.add('initially-hidden');
-	document.querySelector('.movie-entry-form').classList.remove('initially-hidden');
 
-	alert(movie.title);
-	// 4) Add form elements (empty textboxes etc) to render the received data into.
-	// 5) Create and hook up "save form" logic (probably no-JS POST, for simplicity).
+	// 4) Render data to form.
+	form.elements['moviename'].value        = movie.title;
+	form.elements['moviedescription'].value = movie.overview;
 }
+
+// 5) Create and hook up "save form" logic (probably no-JS POST, for simplicity).

@@ -54,6 +54,13 @@ add_shortcode( 'add_movie_form', function() {
 	</form>
 
 	<form method="post" action="/" class="movie-form movie-entry-form initially-hidden">
+		<label for="moviename">Movie name:</label>
+		<input type="text" name="moviename" required>
+
+		<label for="moviedescription">Movie summary:</label>
+		<textarea name="moviedescription" required></textarea>
+
+		<input type="submit" value="Add movie to collection">
 	</form>
 <?php
 } );
