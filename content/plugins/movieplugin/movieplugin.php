@@ -19,7 +19,6 @@ add_action( 'init', function() {
 		],
 		'supports'      => [
 			'editor',
-			'thumbnail',
 			'title',
 		],
 
@@ -54,9 +53,52 @@ add_shortcode( 'add_movie_form', function() {
 		<input type="submit" value="Start search">
 	</form>
 
+	<?php if ( ! empty( $GLOBALS['move_status'] ) ) : ?>
+		<div class="notice updated"><?php echo esc_html( $GLOBALS['move_status'] ); ?></div>
+	<?php endif; ?>
+
 	<form method="post" action="/" class="movie-form movie-entry-form initially-hidden">
+		<label for="moviename">Movie name:</label>
+		<input type="text" name="moviename" required>
+
+		<label for="moviedescription">Movie summary:</label>
+		<textarea name="moviedescription" required></textarea>
+
+		<label for="movierating">Movie rating:</label>
+		<?php wp_dropdown_categories( 'taxonomy=rating&name=movierating&required=1&value_field=slug' ); ?>
+
+		<input type="submit" value="Add movie to collection">
 	</form>
 <?php
+} );
+
+add_action( 'template_redirect', function() {
+	if ( strtoupper( $_SERVER['REQUEST_METHOD'] ) !== 'POST' ) {
+		return;
+	}
+
+	// Handle "add movie" form submission.
+	if ( is_admin() || ! isset( $_POST['moviename'], $_POST['moviedescription'], $_POST['movierating'], $_POST['moviegenre'] ) ) {
+		return;
+	}
+
+	$movie_desc   = wp_kses_post( wp_unslash( $_POST['moviename'] ) );
+	$movie_genre  = (int) $_POST['moviegenre'];
+	$movie_name   = sanitize_text_field( wp_unslash( $_POST['moviename'] ) );
+	$movie_rating = sanitize_text_field( wp_unslash( $_POST['movierating'] ) );
+
+	add_movie(
+		[
+			'post_content' => $movie_desc,
+			'post_status'  => 'publish',
+			'post_title'   => $movie_name,
+			'post_type'    => 'movie',
+		],
+		$movie_rating,
+		$movie_genre
+	);
+
+	$GLOBALS['move_status'] = 'Added movie to collection.';
 } );
 
 /**
@@ -116,7 +158,7 @@ function add_movie( array $post_args, $age_rating = false, $genre = false ) {
 	}
 
 	// Attach any include rating, arrays of slug accepted
-	if ( ! empty ( $age_rating ) ) {
+	if ( ! empty( $age_rating ) ) {
 		wp_set_object_terms( $post_id, $age_rating, 'rating' );
 	}
 

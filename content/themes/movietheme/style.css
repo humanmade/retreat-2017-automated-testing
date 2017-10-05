@@ -33,3 +33,11 @@ Template: twentyfifteen
 .initially-hidden {
 	display: none;
 }
+
+.entry-footer a {
+	text-decoration: underline;
+}
+
+.movie-form textarea {
+	height: 17rem;
+}

@@ -35,7 +35,17 @@ function movie_search_completed(event) {
 		return true;
 	});
 
+	var messages = document.querySelectorAll('div.notice');
+	for (var i = 0, message; message = messages[i]; i++) {
+		message.parentNode.removeChild(message);
+	}
+
 	if (search_result === null) {
+		message = document.createElement('div');
+		message.classList.add('notice', 'error');
+		message.innerHTML = 'Could not find movie.';
+		document.querySelector('.movie-search-form').appendChild(message);
+
 		return;
 	}
 
@@ -44,10 +54,12 @@ function movie_search_completed(event) {
 }
 
 function movie_render_form(movie) {
+	var form = document.querySelector('.movie-entry-form');
+	form.classList.remove('initially-hidden');
 	document.querySelector('.movie-search-form').classList.add('initially-hidden');
-	document.querySelector('.movie-entry-form').classList.remove('initially-hidden');
 
-	alert(movie.title);
-	// 4) Add form elements (empty textboxes etc) to render the received data into.
-	// 5) Create and hook up "save form" logic (probably no-JS POST, for simplicity).
+	// 4) Render data to form.
+	form.elements['moviename'].value        = movie.title;
+	form.elements['moviedescription'].value = movie.overview;
+	form.elements['movierating'].value      = movie.rating[0].toLowerCase();
 }

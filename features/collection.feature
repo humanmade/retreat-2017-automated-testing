@@ -16,4 +16,4 @@ Feature: Manage movie collection
   Scenario: Adding a movie to the collection
     Given I am on the homepage
     When I add a movie to the collection
-    Then I should see a message that says "Added movie to collection."
+    Then I should see a status that says "Added movie to collection."
