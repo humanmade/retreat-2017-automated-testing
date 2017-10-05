@@ -59,14 +59,6 @@ class FeatureContext extends RawWordpressContext implements SnippetAcceptingCont
 	}
 
 	/**
-	 * @Then I should see a message that says :arg1
-	 */
-	public function iShouldSeeAMessageThatSays($arg1)
-	{
-		throw new PendingException();
-	}
-
-	/**
 	 * @Given there are movies in the collection
 	 */
 	public function thereAreMoviesInTheCollection()
@@ -124,7 +116,7 @@ class FeatureContext extends RawWordpressContext implements SnippetAcceptingCont
 	 * @Then I should be redirected to the movie :arg1
 	 */
 	public function iShouldBeRedirectedToTheMovie( $movie_name ) {
-		$movie = $this->getDriver()->content->get( $title, [ 'by' => 'title', 'post_type' => 'movie' ] );
+		$movie = $this->getDriver()->content->get( $movie_name, [ 'by' => 'title', 'post_type' => 'movie' ] );
 		$this->visitPath( '/movies/' . $movie->post_name );
 	}
 }

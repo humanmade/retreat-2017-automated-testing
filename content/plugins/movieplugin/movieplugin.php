@@ -19,7 +19,6 @@ add_action( 'init', function() {
 		],
 		'supports'      => [
 			'editor',
-			'thumbnail',
 			'title',
 		],
 
