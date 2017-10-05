@@ -12,6 +12,7 @@ default:
         - PaulGibbs\WordpressBehatExtension\Context\EditPostContext
         - PaulGibbs\WordpressBehatExtension\Context\WidgetContext
         - PaulGibbs\WordpressBehatExtension\Context\ToolbarContext
+        - PaulGibbs\WordpressBehatExtension\Context\DebugContext
 
   extensions:
     Behat\MinkExtension:
