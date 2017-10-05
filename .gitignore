@@ -12,3 +12,5 @@
 /content/debug.log
 vendor/
 /content/uploads/
+/content/plugins/query-monitor
+/content/db.php
