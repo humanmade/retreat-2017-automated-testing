@@ -61,6 +61,5 @@ function movie_render_form(movie) {
 	// 4) Render data to form.
 	form.elements['moviename'].value        = movie.title;
 	form.elements['moviedescription'].value = movie.overview;
+	form.elements['movierating'].value      = movie.rating[0].toLowerCase();
 }
-
-// 5) Create and hook up "save form" logic (probably no-JS POST, for simplicity).
