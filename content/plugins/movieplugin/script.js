@@ -35,7 +35,17 @@ function movie_search_completed(event) {
 		return true;
 	});
 
+	var messages = document.querySelectorAll('div.notice');
+	for (var i = 0, message; message = messages[i]; i++) {
+		message.parentNode.removeChild(message);
+	}
+
 	if (search_result === null) {
+		message = document.createElement('div');
+		message.classList.add('notice', 'error');
+		message.innerHTML = 'Could not find movie.';
+		document.querySelector('.movie-search-form').appendChild(message);
+
 		return;
 	}
 
