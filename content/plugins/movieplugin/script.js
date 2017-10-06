@@ -1,14 +1,16 @@
-document.querySelector('.movie-search-form')
-	.addEventListener('submit', function(event) {
-		event.preventDefault();
+if (document.querySelector('.movie-search-form') !== null) {
+	document.querySelector('.movie-search-form')
+		.addEventListener('submit', function(event) {
+			event.preventDefault();
 
-		// 1) go request films.json.
-		var request = new XMLHttpRequest();
-		request.open('GET', '/content/plugins/movieplugin/films.json', true);
-		request.addEventListener('load', movie_search_completed);
-		request.send();
-	}
-);
+			// 1) go request films.json.
+			var request = new XMLHttpRequest();
+			request.open('GET', '/content/plugins/movieplugin/films.json', true);
+			request.addEventListener('load', movie_search_completed);
+			request.send();
+		}
+	);
+}
 
 function movie_search_completed(event) {
 	if (this.status < 200 || this.status >= 400) {
@@ -42,7 +44,7 @@ function movie_search_completed(event) {
 
 	if (search_result === null) {
 		message = document.createElement('div');
-		message.classList.add('notice', 'error');
+		message.classList.add('notice', 'published', 'error');
 		message.innerHTML = 'Could not find movie.';
 		document.querySelector('.movie-search-form').appendChild(message);
 
@@ -54,7 +56,9 @@ function movie_search_completed(event) {
 }
 
 function movie_render_form(movie) {
-	var form = document.querySelector('.movie-entry-form');
+	var form     = document.querySelector('.movie-entry-form'),
+		genre_list = document.getElementsByName('moviegenre[]');
+
 	form.classList.remove('initially-hidden');
 	document.querySelector('.movie-search-form').classList.add('initially-hidden');
 
@@ -62,4 +66,15 @@ function movie_render_form(movie) {
 	form.elements['moviename'].value        = movie.title;
 	form.elements['moviedescription'].value = movie.overview;
 	form.elements['movierating'].value      = movie.rating[0].toLowerCase();
+
+	for (var i = 0, item; item = genre_list[i]; i++) {
+		item.checked = false;
+
+		for (var j = 0, genre; genre_id = movie.genre_ids[j]; j++) {
+			if (parseInt(item.getAttribute("data-jsonid"), 10) === parseInt(genre_id, 10)) {
+				item.checked = true;
+				break;
+			}
+		}
+	}
 }
