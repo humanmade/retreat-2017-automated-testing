@@ -40,17 +40,25 @@
 		?>
 	</div><!-- .entry-content -->
 
-	<?php
-		// Author bio.
-		if ( is_single() && get_the_author_meta( 'description' ) ) :
-			get_template_part( 'author-bio' );
-		endif;
-	?>
+	<footer class="entry-footer">
+		<?php if ( is_single() ) : ?>
+			<p><a href="http://workshop.local/movies">Back to movie collection</a></p>
+		<?php endif; ?>
 
-	<?php if ( is_single() ) : ?>
-		<footer class="entry-footer">
-			<a href="http://workshop.local/movies">Back to movie collection</a>
-		</footer><!-- .entry-footer -->
-	<?php endif; ?>
+		<?php
+		if ( is_singular() ) {
+			wp_list_categories( [
+				'taxonomy' => 'rating',
+				'title_li' => 'Movie Rating:'
+			] );
+			echo '<br>';
+
+			wp_list_categories( [
+				'taxonomy' => 'genre',
+				'title_li' => 'Movie Genres:'
+			] );
+		}
+		?>
+	</footer><!-- .entry-footer -->
 
 </article><!-- #post-## -->
