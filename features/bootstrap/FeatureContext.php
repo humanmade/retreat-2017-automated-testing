@@ -83,7 +83,8 @@ class FeatureContext extends RawWordpressContext implements SnippetAcceptingCont
 	 */
 	public function iAddAMovieToTheCollection()
 	{
-		throw new PendingException();
+		$screen = $this->getSession()->getPage();
+		$screen->findButton( 'Add movie to collection' )->click();
 	}
 
 	/**
