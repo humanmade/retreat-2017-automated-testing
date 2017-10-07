@@ -67,7 +67,7 @@ add_shortcode( 'add_movie_form', function() {
 		<label for="movierating">Movie rating:</label>
 		<?php wp_dropdown_categories( 'taxonomy=rating&name=movierating&required=1&value_field=slug&hide_empty=0' ); ?>
 
-		<fieldset>
+		<fieldset class="fieldset-genres">
 			<legend>Movie genres:</legend>
 
 			<?php
