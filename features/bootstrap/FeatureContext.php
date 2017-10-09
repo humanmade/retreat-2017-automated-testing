@@ -35,7 +35,35 @@ class FeatureContext extends RawWordpressContext implements SnippetAcceptingCont
 	 */
 	public function theAddMovieFormShouldBePopulated()
 	{
-		throw new PendingException();
+		$context = $this;
+
+		$logic = function() use ( $context ) {
+			$screen           = $context->getSession()->getPage();
+			$moviename        = $screen->findField( 'moviename' );
+			$moviedescription = $screen->findField( 'moviedescription' );
+			$movierating      = $screen->findField( 'movierating' );
+			$moviegenres      = $screen->findAll( 'css', '.fieldset-genres input[type="checkbox"]' );
+
+			if ( ! $moviename->getValue() || ! $moviedescription->getValue() || ! $movierating->getValue() ) {
+				throw new Exception( 'Movie name, description, or rating, are blank and should not be.' );
+			}
+
+			$genre_is_set = false;
+
+			foreach ( $moviegenres as $moviegenre ) {
+				if ( $moviegenre->isChecked() ) {
+					$genre_is_set = true;
+					break;
+				}
+			}
+
+			if ( empty( $moviegenres ) ) {
+				throw new Exception( 'Movie genres are blank. At least one should be set' );
+			}
+		};
+
+		// Spins() retries the callback method mutiple times - in case the JS/DOM hasn't been fully loaded yet.
+		$this->spins( $logic );
 	}
 
 	/**
@@ -55,7 +83,8 @@ class FeatureContext extends RawWordpressContext implements SnippetAcceptingCont
 	 */
 	public function iAddAMovieToTheCollection()
 	{
-		throw new PendingException();
+		$screen = $this->getSession()->getPage();
+		$screen->findButton( 'Add movie to collection' )->click();
 	}
 
 	/**
@@ -105,7 +134,7 @@ class FeatureContext extends RawWordpressContext implements SnippetAcceptingCont
 
 		if ( $link === null ) {
 			throw new Exception(
-				sprintf( '"When I click on" step failed to find link "%1$s".', $link_name ),
+				sprintf( '"When I click on" step failed to find link "%1$s".', $link_name )
 			);
 		}
 

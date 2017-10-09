@@ -44,17 +44,17 @@ add_shortcode( 'add_movie_form', function() {
 	wp_enqueue_script( 'movieplugin-js', plugins_url( 'script.js', __FILE__ ), [], time() );
 	?>
 
-	<form method="get" action="/" class="movie-form movie-search-form">
-		<p>Search for a movie to add to the database:</p>
+	<?php if ( ! isset( $GLOBALS['movie_status'] ) ) : ?>
+		<form method="get" action="/" class="movie-form movie-search-form">
+			<p>Search for a movie to add to the database:</p>
 
-		<label for="moviesearch">Movie name:</label>
-		<input type="search" name="moviesearch" class="moviesearch" placeholder="e.g. 'Beauty and the Beast'" required>
+			<label for="moviesearch">Movie name:</label>
+			<input type="search" name="moviesearch" class="moviesearch" placeholder="e.g. 'Beauty and the Beast'" required>
 
-		<input type="submit" value="Start search">
-	</form>
-
-	<?php if ( ! empty( $GLOBALS['move_status'] ) ) : ?>
-		<div class="notice updated"><?php echo esc_html( $GLOBALS['move_status'] ); ?></div>
+			<input type="submit" value="Start search">
+		</form>
+	<?php else: ?>
+		<div class="notice published updated"><?php echo esc_html( $GLOBALS['movie_status'] ); ?></div>
 	<?php endif; ?>
 
 	<form method="post" action="/" class="movie-form movie-entry-form initially-hidden">
@@ -65,7 +65,21 @@ add_shortcode( 'add_movie_form', function() {
 		<textarea name="moviedescription" required></textarea>
 
 		<label for="movierating">Movie rating:</label>
-		<?php wp_dropdown_categories( 'taxonomy=rating&name=movierating&required=1&value_field=slug' ); ?>
+		<?php wp_dropdown_categories( 'taxonomy=rating&name=movierating&required=1&value_field=slug&hide_empty=0' ); ?>
+
+		<fieldset class="fieldset-genres">
+			<legend>Movie genres:</legend>
+
+			<?php
+			$terms = get_terms( 'genre', [ 'hide_empty' => false ] );
+
+			if ( ! empty( $terms ) && ! is_wp_error( $terms ) ) {
+				foreach ( $terms as $term ) {
+					echo '<div><label><input type="checkbox" name="moviegenre[]" value="' . esc_attr( $term->term_id ) . '" data-jsonid="' . esc_attr( get_term_meta( $term->term_id, 'json_id', true ) ) . '">' . esc_html( $term->name ) . '</label></div>';
+				}
+			}
+			?>
+		</fieldset>
 
 		<input type="submit" value="Add movie to collection">
 	</form>
@@ -82,8 +96,8 @@ add_action( 'template_redirect', function() {
 		return;
 	}
 
-	$movie_desc   = wp_kses_post( wp_unslash( $_POST['moviename'] ) );
-	$movie_genre  = (int) $_POST['moviegenre'];
+	$movie_desc   = wp_kses_post( wp_unslash( $_POST['moviedescription'] ) );
+	$movie_genre  = array_map( 'absint', (array) $_POST['moviegenre'] );
 	$movie_name   = sanitize_text_field( wp_unslash( $_POST['moviename'] ) );
 	$movie_rating = sanitize_text_field( wp_unslash( $_POST['movierating'] ) );
 
@@ -98,7 +112,7 @@ add_action( 'template_redirect', function() {
 		$movie_genre
 	);
 
-	$GLOBALS['move_status'] = 'Added movie to collection.';
+	$GLOBALS['movie_status'] = 'Added movie to collection.';
 } );
 
 /**
@@ -173,7 +187,6 @@ function add_movie( array $post_args, $age_rating = false, $genre = false ) {
 
 /**
  * Import command for movies
- *
  */
 if ( defined( 'WP_CLI' ) && WP_CLI ) {
 	class WP_CLI_Movies extends WP_CLI_Command {
