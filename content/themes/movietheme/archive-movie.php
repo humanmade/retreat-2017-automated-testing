@@ -18,13 +18,13 @@ get_header(); ?>
 				<?php
 				wp_list_categories( [
 					'taxonomy' => 'rating',
-					'title_li' => 'Movie Rating:'
+					'title_li' => 'All Movie Ratings:'
 				] );
 				echo '<br>';
 
 				wp_list_categories( [
 					'taxonomy' => 'genre',
-					'title_li' => 'Movie Genres:'
+					'title_li' => 'All Movie Genres:'
 				] );
 				?>
 			</div>

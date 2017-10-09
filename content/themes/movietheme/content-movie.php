@@ -47,16 +47,18 @@
 
 		<?php
 		if ( is_singular() ) {
-			wp_list_categories( [
-				'taxonomy' => 'rating',
-				'title_li' => 'Movie Rating:'
-			] );
+			the_terms(
+				get_the_ID(),
+				'rating',
+				'Movie Rating: '
+			);
 			echo '<br>';
 
-			wp_list_categories( [
-				'taxonomy' => 'genre',
-				'title_li' => 'Movie Genres:'
-			] );
+			the_terms(
+				get_the_ID(),
+				'genre',
+				'Movie Genres: '
+			);
 		}
 		?>
 	</footer><!-- .entry-footer -->
