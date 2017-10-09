@@ -6,9 +6,9 @@ Feature: View movie collection
 
   Background:
     Given there are movies in the collection:
-      | name                    | rating    | genre                                | description                                                |
-      | Minions                 | Universal | Adventure, Animation, Comedy, Family | Stuart, Kevin and Bob are recruited by Scarlet Overkill... |
-      | Guardians of the Galaxy | 12        | Action, Adventure, Science Fiction   | Light years from Earth, 26 years after being abducted...   |
+      | name                    | rating    | genre  | description                                                |
+      | Minions                 | Universal | Family | Stuart, Kevin and Bob are recruited by Scarlet Overkill... |
+      | Guardians of the Galaxy | 12        | Action | Light years from Earth, 26 years after being abducted...   |
 
   Scenario: Finding a movie in the site search
     Given I am on the movie collection page
