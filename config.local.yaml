@@ -101,6 +101,7 @@ extensions:
   - chassis/composer
   - chassis/npm
   - chassis/Xdebug
+  - chassis/phpfpmconf
 
 # PHP version
 # Values: 5.6, 7.0, 7.1 (or 5.6.30)
