@@ -100,10 +100,10 @@ class FeatureContext extends RawWordpressContext implements SnippetAcceptingCont
 				'post_status'  => 'publish',
 				'post_title'   => $movie['name'],
 				'post_type'    => 'movie',
-				/*'tax_input'    => [
+				'tax_input'    => [
 					'rating' => $movie['rating'],
 					'genre'  => $movie['genre'],
-				],*/
+				],
 			] );
 		}
 	}
