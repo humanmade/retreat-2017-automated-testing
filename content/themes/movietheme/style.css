@@ -41,3 +41,8 @@ Template: twentyfifteen
 .movie-form textarea {
 	height: 17rem;
 }
+
+li.genre li,
+li.rating li {
+	display: inline;
+}

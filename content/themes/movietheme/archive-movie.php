@@ -14,6 +14,21 @@ get_header(); ?>
 				<h1 class="page-title">Movie Collection</h1>
 			</header><!-- .page-header -->
 
+			<div class="page-content">
+				<?php
+				wp_list_categories( [
+					'taxonomy' => 'rating',
+					'title_li' => 'Movie Rating:'
+				] );
+				echo '<br>';
+
+				wp_list_categories( [
+					'taxonomy' => 'genre',
+					'title_li' => 'Movie Genres:'
+				] );
+				?>
+			</div>
+
 			<?php
 			// Start the Loop.
 			while ( have_posts() ) : the_post();
