@@ -135,7 +135,7 @@ function is_suitable_for( int $movie_id = 0, int $age ) : bool {
 
 	$movie_age_rating = wp_get_object_terms( $movie_id, 'rating' );
 
-	if ( (int) get_term_meta( $movie_age_rating[0]->term_id, 'age_relation', true ) <= $age ) {
+	if ( (int) $movie_age_rating[0]->slug <= $age ) {
 		return true;
 	}
 
