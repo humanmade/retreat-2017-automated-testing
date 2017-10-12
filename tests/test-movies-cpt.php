@@ -28,8 +28,6 @@ class Movie_CPT_Test extends WP_UnitTestCase {
 	 */
 	public function setUp() {
 		parent::setUp();
-
-
 	}
 
 	public function providersuitable() {
@@ -127,6 +125,11 @@ class Movie_CPT_Test extends WP_UnitTestCase {
 			],
 			[
 				$this->movie_db['12A'],
+				6,
+				false,
+			],
+			[
+				999,
 				6,
 				false,
 			],
