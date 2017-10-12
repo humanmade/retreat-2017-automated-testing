@@ -159,15 +159,7 @@ function add_movie( array $post_args, $age_rating = false, $genre = false ) {
 		return $post_id;
 	}
 
-	// Attach any include rating, arrays of slug accepted
-	if ( ! empty( $age_rating ) ) {
-		wp_set_object_terms( $post_id, $age_rating, 'rating' );
-	}
-
-	// Attach any include genre, arrays of slug accepted
-	if ( ! empty( $genre ) ) {
-		wp_set_object_terms( $post_id, $genre, 'genre' );
-	}
+c
 
 	return $post_id;
 }
