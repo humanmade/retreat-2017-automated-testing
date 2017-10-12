@@ -12,6 +12,7 @@ namespace MoviePlugin;
 // Set up content types.
 add_action( 'init',              __NAMESPACE__ . '\\register_movie_post_type' );
 add_action( 'init',              __NAMESPACE__ . '\\register_movie_taxonomies' );
+add_action( 'init',              __NAMESPACE__ . '\\create_term_defaults' );
 add_action( 'init',              __NAMESPACE__ . '\\register_movie_form_shortcode' );
 add_action( 'template_redirect', __NAMESPACE__ . '\\redirect_movie_form_submission' );
 
@@ -46,6 +47,56 @@ function register_movie_taxonomies() {
 		'public'        => true,
 		'show_in_rest'  => true,
 	] );
+}
+
+function create_term_defaults() {
+	$age_ratings = [
+		[
+			'slug' => 'Universal',
+			'meta' => [
+				'age_relation' => 0,
+			],
+		],
+		[
+			'slug' => '12A',
+			'meta' => [
+				'age_relation' => 11,
+			],
+		],
+		[
+			'slug' => '12',
+			'meta' => [
+				'age_relation' => 12,
+			],
+		],
+		[
+			'slug' => '15',
+			'meta' => [
+				'age_relation' => 15,
+			],
+		],
+		[
+			'slug' => 'PG',
+			'meta' => [
+				'age_relation' => 8,
+			],
+		],
+		[
+			'slug' => '18',
+			'meta' => [
+				'age_relation' => 18,
+			],
+		],
+	];
+
+	foreach ( $age_ratings as $age_rating ) {
+		$term_id = wp_insert_term( $age_rating['slug'], 'rating' );
+
+		if ( is_wp_error( $term_id ) ) {
+			continue;
+		}
+		update_term_meta( $term_id['term_id'], 'age_relation', $age_rating['meta']['age_relation'] );
+	}
 }
 
 // "Add movie" shortcode.
