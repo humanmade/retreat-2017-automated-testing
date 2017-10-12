@@ -30,6 +30,8 @@ class Movie_CPT_Test extends WP_UnitTestCase {
 	 */
 	public function setUp() {
 		parent::setUp();
+
+		do_action( 'init' );
 	}
 
 	public function providersuitable() {
