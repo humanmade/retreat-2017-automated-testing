@@ -132,22 +132,10 @@ function is_suitable_for( int $movie_id = 0, int $age ) : bool {
 	}
 
 	$movie_id       = $movie->ID;
-	$certifications = get_terms( 'rating',
-		array(
-			'hide_empty' => false,
-			'meta_query' => array(
-				'meta_query' => array(
-					'meta_key'   => 'age_relation',
-					'meta_value' => $age,
-					'compare'    => '<',
-				)
-			)
-		)
-	);
 
-	$certifications = wp_list_pluck( $certifications, 'term_id' );
+	$movie_age_rating = wp_get_object_terms( $movie_id, 'rating' );
 
-	if ( has_term( $certifications, 'rating', $movie_id ) ) {
+	if ( (int) get_term_meta( $movie_age_rating[0]->term_id, 'age_relation', true ) <= $age ) {
 		return true;
 	}
 
