@@ -85,23 +85,23 @@ class Movie_CPT_Test extends WP_UnitTestCase {
 		$this->movie_db['15'] = $this->movie->create( [
 			'post_title' => 'Movie 1',
 			'post_type'  => 'movie',
-			'age_rating' => $this->age_ratings[3]['slug']
+			'age_rating' => $this->age_ratings[3]['slug'],
 		] );
 
 		$this->movie_db['Universal'] = $this->movie->create( [
 			'post_title' => 'Movie 2',
 			'post_type'  => 'movie',
-			'age_rating' => $this->age_ratings[0]['slug']
+			'age_rating' => $this->age_ratings[0]['slug'],
 		] );
 		$this->movie_db['18'] = $this->movie->create( [
 			'post_title' => 'Movie 3',
 			'post_type'  => 'movie',
-			'age_rating' => $this->age_ratings[5]['slug']
+			'age_rating' => $this->age_ratings[5]['slug'],
 		] );
 		$this->movie_db['12A'] = $this->movie->create( [
 			'post_title' => 'Movie 4',
 			'post_type'  => 'movie',
-			'age_rating' => $this->age_ratings[1]['slug']
+			'age_rating' => $this->age_ratings[1]['slug'],
 		] );
 
 		return [
@@ -143,5 +143,4 @@ class Movie_CPT_Test extends WP_UnitTestCase {
 	public function test_is_suitable( $movie_id, $age, $expected_result ) {
 		$this->assertSame( $expected_result, is_suitable_for( $movie_id, $age ) );
 	}
-
 }
