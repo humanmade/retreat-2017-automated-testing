@@ -79,15 +79,6 @@ class FeatureContext extends RawWordpressContext implements SnippetAcceptingCont
 	}
 
 	/**
-	 * @When I add a movie to the collection
-	 */
-	public function iAddAMovieToTheCollection()
-	{
-		$screen = $this->getSession()->getPage();
-		$screen->findButton( 'Add movie to collection' )->click();
-	}
-
-	/**
 	 * @Given there are movies in the collection:
 	 *
 	 * @param TableNode $movies
@@ -132,28 +123,6 @@ class FeatureContext extends RawWordpressContext implements SnippetAcceptingCont
 
 		throw new \Exception(
 			sprintf( '"Then I should see xyz in the search results" step failed to find "%1$s".', $arg1 )
-		);
-	}
-
-	/**
-	 * @When I look for movies in the :arg1 genre
-	 */
-	public function iLookForMoviesInTheGenre($arg1)
-	{
-		$screen = $this->getSession()->getPage();
-		$genres = $screen->findAll( 'css', 'li.genre li a' );
-
-		// Find the term link whose text is the same as $arg1.
-		foreach ( $genres as $genre ) {
-			if ( $genre->getText() === $arg1 ) {
-
-				$genre->click();
-				return;
-			}
-		}
-
-		throw new \Exception(
-			sprintf( '"When I look for movies in the xyz genre" step failed to find genre "%1$s".', $arg1 )
 		);
 	}
 
