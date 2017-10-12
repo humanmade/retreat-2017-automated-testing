@@ -7,8 +7,15 @@
  * License:     wtfpl
  */
 
+namespace MoviePlugin;
+
 // Set up content types.
-add_action( 'init', function() {
+add_action( 'init',              __NAMESPACE__ . '\\register_movie_post_type' );
+add_action( 'init',              __NAMESPACE__ . '\\register_movie_taxonomies' );
+add_action( 'init',              __NAMESPACE__ . '\\register_movie_form_shortcode' );
+add_action( 'template_redirect', __NAMESPACE__ . '\\redirect_movie_form_submission' );
+
+function register_movie_post_type() {
 	register_post_type( 'movie', [
 		'has_archive'   => true,
 		'label'         => 'Movies',
@@ -25,7 +32,9 @@ add_action( 'init', function() {
 		// Below dashboard.
 		'menu_position' => 2,
 	] );
+}
 
+function register_movie_taxonomies() {
 	register_taxonomy( 'rating', 'movie', [
 		'label'         => 'Movie Rating',
 		'public'        => true,
@@ -37,14 +46,17 @@ add_action( 'init', function() {
 		'public'        => true,
 		'show_in_rest'  => true,
 	] );
-} );
+}
 
 // "Add movie" shortcode.
-add_shortcode( 'add_movie_form', function() {
-	wp_enqueue_script( 'movieplugin-js', plugins_url( 'script.js', __FILE__ ), [], time() );
-	?>
+function register_movie_form_shortcode() {
+	add_shortcode( 'add_movie_form', __NAMESPACE__ . '\\movie_form_shortcode_output' );
+}
 
-	<?php if ( ! isset( $GLOBALS['movie_status'] ) ) : ?>
+function movie_form_shortcode_output() {
+	wp_enqueue_script( 'movieplugin-js', plugins_url( 'script.js', __FILE__ ), [], time() );
+
+	if ( ! isset( $GLOBALS['movie_status'] ) ) : ?>
 		<form method="get" action="/" class="movie-form movie-search-form">
 			<p>Search for a movie to add to the database:</p>
 
@@ -75,7 +87,9 @@ add_shortcode( 'add_movie_form', function() {
 
 			if ( ! empty( $terms ) && ! is_wp_error( $terms ) ) {
 				foreach ( $terms as $term ) {
-					echo '<div><label><input type="checkbox" name="moviegenre[]" value="' . esc_attr( $term->term_id ) . '" data-jsonid="' . esc_attr( get_term_meta( $term->term_id, 'json_id', true ) ) . '">' . esc_html( $term->name ) . '</label></div>';
+					$json_id = get_term_meta( $term->term_id, 'json_id', true );
+
+					echo '<div><label><input type="checkbox" name="moviegenre[]" value="' . esc_attr( $term->term_id ) . '" data-jsonid="' . esc_attr( $json_id ) . '">' . esc_html( $term->name ) . '</label></div>';
 				}
 			}
 			?>
@@ -84,9 +98,9 @@ add_shortcode( 'add_movie_form', function() {
 		<input type="submit" value="Add movie to collection">
 	</form>
 <?php
-} );
+}
 
-add_action( 'template_redirect', function() {
+function redirect_movie_form_submission() {
 	if ( strtoupper( $_SERVER['REQUEST_METHOD'] ) !== 'POST' ) {
 		return;
 	}
@@ -113,7 +127,7 @@ add_action( 'template_redirect', function() {
 	);
 
 	$GLOBALS['movie_status'] = 'Added movie to collection.';
-} );
+}
 
 /**
  * Conditional Check for age suitable for movies
@@ -131,7 +145,7 @@ function is_suitable_for( int $movie_id = 0, int $age ) : bool {
 		return false;
 	}
 
-	$movie_id       = $movie->ID;
+	$movie_id = $movie->ID;
 
 	$movie_age_rating = wp_get_object_terms( $movie_id, 'rating' );
 

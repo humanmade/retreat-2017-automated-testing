@@ -1,5 +1,7 @@
 <?php
 
+use MoviePlugin;
+
 
 /**
  * Sample test case.
@@ -28,8 +30,6 @@ class Movie_CPT_Test extends WP_UnitTestCase {
 	 */
 	public function setUp() {
 		parent::setUp();
-
-
 	}
 
 	public function providersuitable() {
@@ -106,6 +106,11 @@ class Movie_CPT_Test extends WP_UnitTestCase {
 
 		return [
 			[
+				1000,
+				1000,
+				false
+			],
+			[
 				$this->movie_db['15'],
 				18,
 				true,
@@ -134,13 +139,43 @@ class Movie_CPT_Test extends WP_UnitTestCase {
 	}
 
 	/**
+	 *
+	 * @covers MoviePlugin\register_movie_post_type
+	 */
+	public function test_register_movie_post_type() {
+		$this->assertTrue( post_type_exists( 'movie' ) );
+	}
+
+	/**
+	 * @covers MoviePlugin\register_movie_taxonomies
+	 */
+	public function test_register_movie_rating_taxonomy() {
+		$this->assertTrue( taxonomy_exists( 'rating' ) );
+	}
+
+	/**
+	 * @covers MoviePlugin\register_movie_taxonomies
+	 */
+	public function test_register_movie_genre_taxonomy() {
+		$this->assertTrue( taxonomy_exists( 'genre' ) );
+	}
+
+	/**
+	 * @covers MoviePlugin\register_movie_form_shortcode
+	 */
+	public function test_register_movie_form_shortcode() {
+		$this->assertTrue( shortcode_exists( 'add_movie_form' ) );
+	}
+
+	/**
 	 * @param $movie_id
 	 * @param $age
 	 * @param $expected_result
 	 *
 	 * @dataProvider providersuitable
+	 * @covers MoviePlugin\is_suitable_for
 	 */
 	public function test_is_suitable( $movie_id, $age, $expected_result ) {
-		$this->assertSame( $expected_result, is_suitable_for( $movie_id, $age ) );
+		$this->assertSame( $expected_result, MoviePlugin\is_suitable_for( $movie_id, $age ) );
 	}
 }
