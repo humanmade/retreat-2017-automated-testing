@@ -1,10 +1,14 @@
+@db
 Feature: View movie collection
   In order to see the movies in a collection
   As a visitor
   I need to be able to browse through the collection
 
   Background:
-    Given there are movies in the collection
+    Given there are movies in the collection:
+      | name                    | rating    | genre  | description                                                |
+      | Minions                 | Universal | Family | Stuart, Kevin and Bob are recruited by Scarlet Overkill... |
+      | Guardians of the Galaxy | 12        | Action | Light years from Earth, 26 years after being abducted...   |
 
   Scenario: Finding a movie in the site search
     Given I am on the movie collection page
@@ -25,4 +29,4 @@ Feature: View movie collection
     Given I am on the movie collection page
     When I click on "Minions"
     Then I should be redirected to the movie "Minions"
-      And I should see "Minions Stuart, Kevin and Bob are recruited by Scarlet Overkill, a super-villain who, alongside her inventor husband Herb, hatches a plot to take over the world."
+      And I should see "Stuart, Kevin and Bob are recruited by Scarlet Overkill…"

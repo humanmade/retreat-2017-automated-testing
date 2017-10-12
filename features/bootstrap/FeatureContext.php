@@ -2,7 +2,7 @@
 use PaulGibbs\WordpressBehatExtension\Context\RawWordpressContext;
 use Behat\Behat\Context\SnippetAcceptingContext;
 use Behat\Behat\Tester\Exception\PendingException;
-use Exception;
+use Behat\Gherkin\Node\TableNode;
 
 /**
  * Define application features from the specific context.
@@ -45,7 +45,7 @@ class FeatureContext extends RawWordpressContext implements SnippetAcceptingCont
 			$moviegenres      = $screen->findAll( 'css', '.fieldset-genres input[type="checkbox"]' );
 
 			if ( ! $moviename->getValue() || ! $moviedescription->getValue() || ! $movierating->getValue() ) {
-				throw new Exception( 'Movie name, description, or rating, are blank and should not be.' );
+				throw new \Exception( 'Movie name, description, or rating, are blank and should not be.' );
 			}
 
 			$genre_is_set = false;
@@ -58,7 +58,7 @@ class FeatureContext extends RawWordpressContext implements SnippetAcceptingCont
 			}
 
 			if ( empty( $moviegenres ) ) {
-				throw new Exception( 'Movie genres are blank. At least one should be set' );
+				throw new \Exception( 'Movie genres are blank. At least one should be set' );
 			}
 		};
 
@@ -88,11 +88,24 @@ class FeatureContext extends RawWordpressContext implements SnippetAcceptingCont
 	}
 
 	/**
-	 * @Given there are movies in the collection
+	 * @Given there are movies in the collection:
+	 *
+	 * @param TableNode $movies
 	 */
-	public function thereAreMoviesInTheCollection()
+	public function thereAreMoviesInTheCollection( TableNode $movies )
 	{
-		throw new PendingException();
+		foreach ( $movies->getHash() as $movie ) {
+			$this->createContent( [
+				'post_content' => $movie['description'],
+				'post_status'  => 'publish',
+				'post_title'   => $movie['name'],
+				'post_type'    => 'movie',
+				'tax_input'    => [
+					'rating' => $movie['rating'],
+					'genre'  => $movie['genre'],
+				],
+			] );
+		}
 	}
 
 	/**
@@ -107,7 +120,19 @@ class FeatureContext extends RawWordpressContext implements SnippetAcceptingCont
 	 */
 	public function iShouldSeeInTheSearchResults($arg1)
 	{
-		throw new PendingException();
+		$screen  = $this->getSession()->getPage();
+		$results = $screen->findAll( 'css', '.search-results #main article' );
+
+		foreach ( $results as $result ) {
+			$link = $result->find( 'named', [ 'link', $arg1 ] );
+			if ( $link !== null && $link->getText() === $arg1 ) {
+				return;
+			}
+		}
+
+		throw new \Exception(
+			sprintf( '"Then I should see xyz in the search results" step failed to find "%1$s".', $arg1 )
+		);
 	}
 
 	/**
@@ -115,7 +140,21 @@ class FeatureContext extends RawWordpressContext implements SnippetAcceptingCont
 	 */
 	public function iLookForMoviesInTheGenre($arg1)
 	{
-		throw new PendingException();
+		$screen = $this->getSession()->getPage();
+		$genres = $screen->findAll( 'css', 'li.genre li a' );
+
+		// Find the term link whose text is the same as $arg1.
+		foreach ( $genres as $genre ) {
+			if ( $genre->getText() === $arg1 ) {
+
+				$genre->click();
+				return;
+			}
+		}
+
+		throw new \Exception(
+			sprintf( '"When I look for movies in the xyz genre" step failed to find genre "%1$s".', $arg1 )
+		);
 	}
 
 	/**
@@ -123,7 +162,21 @@ class FeatureContext extends RawWordpressContext implements SnippetAcceptingCont
 	 */
 	public function iLookForMoviesRatedUniversal()
 	{
-		throw new PendingException();
+		$screen  = $this->getSession()->getPage();
+		$ratings = $screen->findAll( 'css', 'li.rating li a' );
+
+		// Find the term link whose text is "Universal".
+		foreach ( $ratings as $rating ) {
+			if ( $rating->getText() === 'Universal' ) {
+
+				$rating->click();
+				return;
+			}
+		}
+
+		throw new \Exception(
+			sprintf( '"When I look for movies rated Universal" step failed to find rating "%1$s".', 'Universal' )
+		);
 	}
 
 	/**
@@ -133,7 +186,7 @@ class FeatureContext extends RawWordpressContext implements SnippetAcceptingCont
 		$link = $this->getSession()->getPage()->findLink( $link_name );
 
 		if ( $link === null ) {
-			throw new Exception(
+			throw new \Exception(
 				sprintf( '"When I click on" step failed to find link "%1$s".', $link_name )
 			);
 		}
@@ -147,5 +200,12 @@ class FeatureContext extends RawWordpressContext implements SnippetAcceptingCont
 	public function iShouldBeRedirectedToTheMovie( $movie_name ) {
 		$movie = $this->getDriver()->content->get( $movie_name, [ 'by' => 'title', 'post_type' => 'movie' ] );
 		$this->visitPath( '/movies/' . $movie->post_name );
+
+		$screen = $this->getSession()->getPage();
+		$title = $screen->find( 'css', '.entry-header' );
+
+		if ( $title === null || $title->getText() !== $movie_name ) {
+			throw new \Exception( 'Then I should be redirect to the movie xyz" step failed.' );
+		}
 	}
 }

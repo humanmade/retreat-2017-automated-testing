@@ -1,3 +1,4 @@
+@db
 Feature: Manage movie collection
   In order to show people a collection of favourite movies
   As a curator
